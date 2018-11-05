@@ -1,8 +1,10 @@
 # literate-json
 
-A major downside of JSON is that it's often hard to read, especially when used as a configuration language.
+A major downside of JSON is that it's often hard to read or annotate, especially when used as a configuration language.
 
 One way to address this is to embed JSON data in a markdown file, using a certain format that is readable and commentable. A script takes the markdown file and converts it into one or more machine-readable JSON files.
+
+You can also take existing JSON files and generate a markdown file from them using this format.
 
 ## Writing JSON as markdown
 
@@ -103,6 +105,17 @@ An array of objects that each have a single key/value can be written in-line:
 ```
 
 Which is evaluated to `[{"key": "val"}, {"key": "val"}]`
+
+You can embed other JSON documents by using a markdown link in a value whose name has a `.md` extension:
+
+```
+# [my_json.json](my_json.json)
+
+This is the start of the definition for the `my_json.json` file. The following is a top-level key whose contents are loaded from a separate file:
+
+* xyz: [definitions/xyz.md](definitions/xyz.md)
+
+```
 
 ## Examples
 
